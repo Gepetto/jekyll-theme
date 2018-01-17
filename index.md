@@ -1,5 +1,7 @@
 ---
 layout: home
 title: Test Site Homepage
-description:  Software for Motion and Manipulation Planning
+description: A website to check github pages, jekyll & bootstrap 4
 ---
+
+My real website is [here](https://saurel.me).
