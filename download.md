@@ -1,4 +1,5 @@
 ---
 layout: page
-title: Download
+title: Download & Install
+category: Getting Started
 ---

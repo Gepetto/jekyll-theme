@@ -14,3 +14,13 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - LICENSE
+
+category_list:
+  - name: Getting Started
+    icon: graduation-cap
+  - name: Documentation
+    icon: book
+  - name: Development
+    icon: wrench
+  - name: Support
+    icon: question-circle

@@ -10,54 +10,22 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <!--TODO: active:-->
-        <!--<li class="nav-item active">-->
-          <!--<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-        <!--</li>-->
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-graduation-cap"></i>
-            Getting Started
+        {% for category in site.category_list %}
+        <li class="nav-item dropdown {% if page.category == category.name %}active{% endif %}">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ category.name | slugify }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-{{ category.icon }}"></i>
+            {{ category.name }}
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <a class="dropdown-item" href="{{ 'download' | relative_url }}">Download & Install</a>
-            <a class="dropdown-item" href="{{ 'tutorials' | relative_url }}">Tutorials</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ category.name | slugify }}">
+            {% for page in site.pages %}
+            {% if page.category == category.name %}
+            <a class="dropdown-item" href="{{ page.url | relative_url }}">{{ page.title }}</a>
+            {% endif %}
+            {% endfor %}
           </div>
         </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-book"></i>
-            Documentation
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-            <a class="dropdown-item" href="{{ 'download' | relative_url }}">Download & Install</a>
-            <a class="dropdown-item" href="{{ 'tutorials' | relative_url }}">Tutorials</a>
-          </div>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-wrench"></i>
-            Development
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-            <a class="dropdown-item" href="{{ 'download' | relative_url }}">Download & Install</a>
-            <a class="dropdown-item" href="{{ 'tutorials' | relative_url }}">Tutorials</a>
-          </div>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-question-circle"></i>
-            Support
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-            <a class="dropdown-item" href="{{ 'download' | relative_url }}">Download & Install</a>
-            <a class="dropdown-item" href="{{ 'tutorials' | relative_url }}">Tutorials</a>
-          </div>
-        </li>
+        {% endfor %}
 
       </ul>
     </div>
