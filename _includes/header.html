@@ -18,11 +18,15 @@
             {{ category.name }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ category.name | slugify }}">
-            {% for page in site.pages %}
-            {% if page.category == category.name %}
+            {% for page in site.pages %}{% if page.category == category.name %}
             <a class="dropdown-item" href="{{ page.url | relative_url }}">{{ page.title }}</a>
-            {% endif %}
+            {% endif %}{% endfor %}
+            {% if category.links %}
+            <div class="dropdown-divider"></div>
+            {% for link in category.links %}
+            <a class="dropdown-item" href="{{ link.url }}">{{ link.name }}</a>
             {% endfor %}
+            {% endif %}
           </div>
         </li>
         {% endfor %}
