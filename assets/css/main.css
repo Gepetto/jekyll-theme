@@ -31,3 +31,5 @@ pre {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+.carousel-caption { background-color: rgba(.5, .5, .5, .5); border-radius: 5px; }
