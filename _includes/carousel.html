@@ -8,7 +8,15 @@
   <div class="carousel-inner bg-bleu">
     {% for project in site.data.projects %}
     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-      <img class="d-block mx-auto" src="{{ '/assets/showcase/' | relative_url }}{{ project.image }}" alt="{{ project.ref }}" height="500px">
+      {% if project.image %}
+        <img class="d-block mx-auto" src="{{ '/assets/showcase/' | relative_url }}{{ project.image }}" alt="{{ project.ref }}" height="500px">
+      {% elsif project.video %}
+        {% if project.video.youtube_id %}
+          <iframe height="500px" width="100%" src="https://www.youtube.com/embed/{{ project.video.youtube_id }}?autoplay=1&loop=1&controls=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        {% else %}
+          <video heigh="500px" width="100%" autoplay loop muted src="{{ project.video.url }}"></video>
+        {% endif %}
+      {% endif %}
       <div class="carousel-caption d-none d-md-block">
         <h5>{{ project.title }}</h5>
         <p>{{ project.description }}</p>
